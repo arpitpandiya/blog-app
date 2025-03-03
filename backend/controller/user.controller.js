@@ -113,4 +113,16 @@ export const logout = (req, res)=>{
  }
 }
 
+// Get my profile
 
+export const getMyProfile = async(req, res)=>{
+  const user = req.user;
+  res.status(200).json(user);
+}
+
+// show all admins
+
+export const getAdmins = async(req, res)=>{
+  const admins = await User.find({role: "admin"});
+  res.status(200).json(admins);
+}
