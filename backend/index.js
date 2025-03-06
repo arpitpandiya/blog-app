@@ -14,15 +14,17 @@ dotenv.config()
 const port = process.env.PORT;
 const MONGO_URL = process.env.MONGO_URI;
 
-// Enable CORS
-app.use(cors({
-  origin: "http://localhost:5173",
-  credentials: true // Allow cookies
-}));
 
 // Middleware
   app.use(express.json());
   app.use(cookieParser());
+
+// Enable CORS
+  app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+}));
 
   app.use(
     fileUpload({
