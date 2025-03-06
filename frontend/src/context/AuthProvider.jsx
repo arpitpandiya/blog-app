@@ -6,12 +6,12 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get(
+        const {data} = await axios.get(
           "http://localhost:4001/api/blogs/all-blogs", 
           {withCredentials: true}
         );
-        console.log(response);
-        setBlogs(response.data);
+        console.log(data);
+        setBlogs(data);
       } catch (error) {
         console.log(error);
       }
