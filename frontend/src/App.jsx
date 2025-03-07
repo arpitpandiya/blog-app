@@ -11,6 +11,7 @@ import Register from '../src/pages/Register'
 import Dashboard from '../src/pages/Dashboard'
 import Creators from './pages/Creators'
 import { useAuth } from './context/AuthProvider'
+import { Toaster } from 'react-hot-toast'
 
 
 const App = () => {
@@ -23,7 +24,7 @@ const App = () => {
     <div>
       {!hideNavbarFooter && <Navbar />}
       <Routes>
-        {/* <Route exact path="/" element={<Home />} /> */}
+        <Route exact path="/" element={<Home />} />
         <Route exact path="/blogs" element={<Blogs />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
@@ -32,8 +33,8 @@ const App = () => {
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
       </Routes>
-
-      {/* {!hideNavbarFooter && <Footer />} */}
+      <Toaster />
+      {!hideNavbarFooter && <Footer />}
     </div>
   )
 }
