@@ -23,7 +23,7 @@ export const createBlog = async (req, res) => {
         return res.status(400).json({ message: "title, category & about are required fields" });
       }
       const adminName = req?.user?.name;
-      const adminPhoto = req?.user?.photo;
+      const adminPhoto = req?.user?.photo?.url;
       const createdBy = req?.user?._id;
     
       
@@ -75,7 +75,7 @@ export const deleteBlog = async (req, res)=>{
 // Getting all blogs
 export const getAllBlogs = async (req, res)=>{
     const allBlogs = await Blog.find();
-    res.status(200).json({allBlogs});
+    res.status(200).json(allBlogs);
 }
 
 //Getting a single blog
