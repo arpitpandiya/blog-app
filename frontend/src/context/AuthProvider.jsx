@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
           "http://localhost:4001/api/blogs/all-blogs", 
           {withCredentials: true}
         );
-        console.log(data);
+        console.log("API Response:",data);
         setBlogs(data);
       } catch (error) {
         console.log(error);
