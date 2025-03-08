@@ -13,7 +13,7 @@ const Navbar = () => {
       <nav className='shadow-lg px-4 py-3'>
 
         <div className='flex items-center justify-between container mx-auto'>
-          <div className='font-semibold text-xl'>
+          <div className='font-semibold text-xl flex-1'>
             Cilli<span className='text-blue-500'>Blog</span>
           </div>
 
@@ -29,7 +29,7 @@ const Navbar = () => {
             <div className='md:hidden' onClick={()=>setShow(!show)}>{show?<IoCloseSharp size={24}/>:<AiOutlineMenu size={24}/>}</div>
           </div>
 
-          <div className='hidden md:flex space-x-2'>
+          <div className='hidden md:flex space-x-2 flex-1 justify-end'>
             <Link to="/dashboard" className='bg-blue-600 text-white font-semibold hover:bg-blue-800 duration-300 px-4 py-2 rounded'>DASHBOARD</Link>
             <Link to="/Login" className='bg-red-600 text-white font-semibold hover:bg-red-800 duration-300 px-4 py-2 rounded'>LOGIN</Link>
           </div>
