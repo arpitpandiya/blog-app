@@ -27,7 +27,7 @@ const Trending = () => {
   };
 
   return (
-    <div className="container mx-auto max-w-screen-xl ">
+    <div className="container mx-auto my-12 p-4 max-w-screen-xl">
       <h1 className="text-2xl font-semibold mb-4">Trending</h1>
       <Carousel responsive={responsive}>
         {blogs && blogs.length > 0 ? (
