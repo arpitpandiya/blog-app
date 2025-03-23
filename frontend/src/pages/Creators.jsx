@@ -13,7 +13,7 @@ const Creators = () => {
             withCredentials: true,
           }
         );
-        setCreators(data);
+        setCreators(data.admins);
       } catch (error) {
         console.log(error);
       }
