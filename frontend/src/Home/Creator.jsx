@@ -11,7 +11,7 @@ const Creator = () => {
         withCredentials: true,
       })
       console.log(data);
-      setAdmin(data);
+      setAdmin(data.admins);
     } catch(error){
       console.log("Error fetching admins: ",error);
     }
