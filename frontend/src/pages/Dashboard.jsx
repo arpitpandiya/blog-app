@@ -5,11 +5,16 @@ import MyProfile from '../dashboard/MyProfile';
 import MyBlogs from '../dashboard/MyBlogs';
 import CreateBlog from '../dashboard/CreateBlog';
 import UpdateBlog from '../dashboard/UpdateBlog';
+import { Navigate } from 'react-router-dom';
 const Dashboard = () => {
   const{profile, isAuthenticated} = useAuth();
   const [component, setComponent] = useState("My Blogs");
   console.log(profile);
   console.log(isAuthenticated);
+
+  if(!isAuthenticated){
+    return <Navigate to={"/"}/>;
+  }
   return (
     <div>
       <div>
