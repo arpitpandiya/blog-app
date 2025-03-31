@@ -1,10 +1,13 @@
 import axios from "axios"
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import toast from "react-hot-toast"
+import { useAuth } from "../context/AuthProvider"
 
 
 const Login = () => {
+  const {isAuthenticated ,setIsAuthenticated} = useAuth();
+  const navigateTo = useNavigate();
   const[email, setEmail] = useState("")
   const[password, setPassword] = useState("")
   const[role, setRole] = useState("")
@@ -22,10 +25,12 @@ const Login = () => {
         }
       });
       console.log(data)
-      toast.success(data.message || "User registered successfully")
+      toast.success(data.message || "User Logined successfully")
+      setIsAuthenticated(true);
       setEmail("")
       setPassword("")
       setRole("")
+      navigateTo("/");
     } catch(error){
       console.log(error)
       toast.error(error.message || "Please fill required fields")
