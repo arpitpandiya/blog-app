@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import { CiMenuBurger } from "react-icons/ci";
 import { BiSolidLeftArrowAlt } from "react-icons/bi";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 
 const Sidebar = ({ setComponent }) => {
@@ -26,10 +27,11 @@ const Sidebar = ({ setComponent }) => {
     e.preventDefault();
     try {
       const {data} = await axios.get("http://localhost:4001/api/users/logout",{ withCredentials: true });
+      toast.success(data.message);
       setIsAuthenticated(false);
     } catch (error) {
       console.log(error);
-      alert(error.data.message || "failed to Logout");
+      toast.error(error.data.message || "failed to Logout");
     }
   }
   return (
