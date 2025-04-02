@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthProvider"
 
 const Register = () => {
-  const  {isAuthenticated ,setIsAuthenticated} = useAuth();
+  const  {isAuthenticated ,setIsAuthenticated, setProfile} = useAuth();
   const navigateTo = useNavigate();
   const[name, setName] = useState("")
   const[email, setEmail] = useState("")
@@ -59,6 +59,7 @@ const Register = () => {
       });
       console.log(data)
       toast.success(data.message || "User registered successfully")
+      setProfile(data);
       setIsAuthenticated(true);
       setName("")
       setEmail("")
@@ -119,7 +120,7 @@ const Register = () => {
             <input type="file" onChange={changePhotoHandler} className="w-full p-2 border border-black rounded-md file:bg-gray-200 file:border  file:rounded-md file:px-3 file:py-1.5 file:cursor-pointer "/>
           </div>
 
-          <p className="text-center mb-4">Already registered?{" "}<Link className="text-blue-600">Login Now</Link></p>
+          <p className="text-center mb-4">Already registered?{" "}<Link to={"/login"} className="text-blue-600">Login Now</Link></p>
           <button type="submit" className="w-full p-2 bg-blue-500 hover:bg-blue-800 duration-300 rounded-md text-white">Register</button>
         </form>
       </div>

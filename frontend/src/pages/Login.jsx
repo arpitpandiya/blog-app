@@ -6,7 +6,7 @@ import { useAuth } from "../context/AuthProvider"
 
 
 const Login = () => {
-  const {isAuthenticated ,setIsAuthenticated} = useAuth();
+  const {isAuthenticated ,setIsAuthenticated,setProfile} = useAuth();
   const navigateTo = useNavigate();
   const[email, setEmail] = useState("")
   const[password, setPassword] = useState("")
@@ -14,9 +14,6 @@ const Login = () => {
 
   const handleLogin = async(e) =>{
     e.preventDefault()
-    if(!email || !password || !role){
-      toast.error("Please fill all the fields");
-    }
     try{
       const {data} = await axios.post("http://localhost:4001/api/users/login", {email, password, role},{
         withCredentials:true,
@@ -25,7 +22,8 @@ const Login = () => {
         }
       });
       console.log(data)
-      toast.success(data.message || "User Logined successfully")
+      toast.success(data.message || "User Logined successfully",{duration:3000,});
+      setProfile(data);
       setIsAuthenticated(true);
       setEmail("")
       setPassword("")
@@ -33,7 +31,7 @@ const Login = () => {
       navigateTo("/");
     } catch(error){
       console.log(error)
-      toast.error(error.message || "Please fill required fields")
+      toast.error(error.response.data.message || "Please fill required fields", {duration:3000,})
     }
   }
 
@@ -60,7 +58,7 @@ const Login = () => {
             <input type="password" placeholder="Your Password" value={password} onChange={(e)=>setPassword(e.target.value)} className="w-full p-2 border rounded-md focus:border-2 focus:border-blue-600 outline-none" />
           </div>
           
-          <p className="text-center mb-4">New User?{" "}<Link className="text-blue-600">Register Now</Link></p>
+          <p className="text-center mb-4">New User?{" "}<Link to={"/register"} className="text-blue-600">Register Now</Link></p>
           <button type="submit" className="w-full p-2 bg-blue-500 hover:bg-blue-800 duration-300 rounded-md text-white">Login</button>
         </form>
       </div>
