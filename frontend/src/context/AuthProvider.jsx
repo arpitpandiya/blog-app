@@ -17,8 +17,8 @@ export const AuthProvider = ({ children }) => {
               headers: { "Content-Type": "application/json" },
             }
           );
-          console.log("API Response:", data);
           setProfile(data);
+          console.log("API Response:", data);
           setIsAuthenticated(true);
         
       } catch (error) {

@@ -39,7 +39,7 @@ const Sidebar = ({ setComponent }) => {
     <div className="sm:hidden fixed top-4 left-4 z-50" onClick={()=>setShow(!show)}>
     <CiMenuBurger className="text-2xl" />
     </div>
-    <div className={`w-64 h-full shadow-lg fixed top-0 left-0 bg-gray-50 transition-transform duration-300 transform sm:translate-x-0 ${show?"translate-x-0":"-translate-x-full"}`}>
+    <div className={`w-64 h-full shadow-lg fixed top-0 left-0 bg-gray-50 transition-transform duration-300 transform sm:translate-x-0 ${show?"translate-x-0":"-translate-x-full"} z-50`}>
 
       <div className="sm:hidden absolute top-4 right-4 text-xl cursor-pointer" onClick={()=>setShow(!show)}>
       <BiSolidLeftArrowAlt className="text-2xl"/>

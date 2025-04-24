@@ -3,7 +3,8 @@ import { useAuth } from '../context/AuthProvider'
 
 const MyProfile = () => {
   const {profile} = useAuth();
-  console.log(profile?.user);
+  console.log("User Profile Data:", profile.user);
+  console.log("Photo URL:", profile?.photo?.url);
   return (
     <div>
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -14,7 +15,7 @@ const MyProfile = () => {
             alt="avatar"
             className="w-full h-48 object-cover"
           />
-          <div className="absolute inset-x-0 bottom-0 transform translate-y-1/2">
+          <div className="absolute inset-x-0 bottom-0 transform translate-y-1/2 z-10 bg-white rounded-full">
             <img
               src={profile?.user?.photo?.url}
               alt="avatar"
