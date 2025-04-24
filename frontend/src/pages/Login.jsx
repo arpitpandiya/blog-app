@@ -50,8 +50,8 @@ const Login = () => {
           <h1 className="text-xl font-semibold mb-6">Register</h1>
           <select value={role} onChange={(e)=>setRole(e.target.value)} className="w-full p-2 mb-4 border rounded-md focus:border-2 focus:border-blue-600 outline-none">
             <option value="">Select Role</option>
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
+            <option value="user">Reader</option>
+            <option value="admin">Author</option>
           </select>
           
           <div className="mb-4">
