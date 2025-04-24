@@ -3,6 +3,8 @@ import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import toast from "react-hot-toast"
 import { useAuth } from "../context/AuthProvider"
+import { Eye, EyeOff } from "lucide-react"
+
 
 
 const Login = () => {
@@ -11,6 +13,8 @@ const Login = () => {
   const[email, setEmail] = useState("")
   const[password, setPassword] = useState("")
   const[role, setRole] = useState("")
+  const [showPassword, setShowPassword] = useState(false);
+
 
   const handleLogin = async(e) =>{
     e.preventDefault()
@@ -54,9 +58,22 @@ const Login = () => {
             <input type="email" placeholder="Your Email Address" value={email} onChange={(e)=>setEmail(e.target.value)} className="w-full p-2 border rounded-md focus:border-2 focus:border-blue-600 outline-none" />
           </div>
           
-          <div className="mb-4">
-            <input type="password" placeholder="Your Password" value={password} onChange={(e)=>setPassword(e.target.value)} className="w-full p-2 border rounded-md focus:border-2 focus:border-blue-600 outline-none" />
+          <div className="mb-4 relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Your Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-2 border rounded-md focus:border-2 focus:border-blue-600 outline-none pr-10"
+            />
+            <div
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-600"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </div>
           </div>
+
           
           <p className="text-center mb-4">New User?{" "}<Link to={"/register"} className="text-blue-600">Register Now</Link></p>
           <button type="submit" className="w-full p-2 bg-blue-500 hover:bg-blue-800 duration-300 rounded-md text-white">Login</button>

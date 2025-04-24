@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import toast from "react-hot-toast"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthProvider"
+import { Eye, EyeOff } from "lucide-react";
 
 const Register = () => {
   const  {isAuthenticated ,setIsAuthenticated, setProfile} = useAuth();
@@ -15,6 +16,7 @@ const Register = () => {
   const[education, setEducation] = useState("")
   const[photo, setPhoto] = useState("")
   const[photoPreview, setPhotoPreview] = useState("")
+  const[showPassword, setShowPassword] = useState(false);
   
   const changePhotoHandler = (e) =>{
     console.log(e);
@@ -101,9 +103,22 @@ const Register = () => {
             inputMode="numeric"
             pattern="[0-9]*" placeholder="Your Phone Number" value={phone} onChange={(e)=>setPhone(e.target.value)} className="w-full p-2 border rounded-md focus:border-2 focus:border-blue-600 outline-none" />
           </div>
-          <div className="mb-4">
-            <input type="password" placeholder="Your Password" value={password} onChange={(e)=>setPassword(e.target.value)} className="w-full p-2 border rounded-md focus:border-2 focus:border-blue-600 outline-none" />
+          <div className="mb-4 relative">
+            <input
+              type={showPassword ? "text" : "password"} // ← Conditionally show/hide
+              placeholder="Your Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-2 border rounded-md focus:border-2 focus:border-blue-600 outline-none pr-10"
+            />
+            <div
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-600"
+              onClick={() => setShowPassword(!showPassword)} // ← Toggle visibility
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />} 
+            </div>
           </div>
+
           <select value={education} onChange={(e)=>setEducation(e.target.value)} className="w-full p-2 mb-4 border rounded-md focus:border-2 focus:border-blue-600 outline-none">
             <option value="">Select Your Education</option>
             <option value="B.Tech">B.Tech</option>
