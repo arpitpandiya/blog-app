@@ -61,7 +61,7 @@ const Register = () => {
       });
       console.log(data)
       toast.success(data.message || "User registered successfully")
-      setProfile(data);
+      // setProfile(data);
       setIsAuthenticated(true);
       setName("")
       setEmail("")

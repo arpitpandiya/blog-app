@@ -27,7 +27,7 @@ const Login = () => {
       });
       console.log(data)
       toast.success(data.message || "User Logined successfully",{duration:3000,});
-      setProfile(data);
+      // setProfile(data);
       setIsAuthenticated(true);
       setEmail("")
       setPassword("")

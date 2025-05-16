@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthProvider'
 
 const MyProfile = () => {
   const {profile} = useAuth();
-  console.log("User Profile Data:", profile.user);
+  console.log("profile>>>>:", profile);
   console.log("Photo URL:", profile?.photo?.url);
   return (
     <div>
