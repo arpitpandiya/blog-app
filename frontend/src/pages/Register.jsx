@@ -53,7 +53,7 @@ const Register = () => {
     formData.append("education",education)
     formData.append("photo",photo)
     try{
-      const {data} = await axios.post("http://localhost:4001/api/users/register", formData,{
+      const {data} = await axios.post("https://blog-app-ke5j.onrender.com/api/users/register", formData,{
         withCredentials:true,
         headers:{
           "Content-Type":"multipart/form-data",

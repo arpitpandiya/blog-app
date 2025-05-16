@@ -15,9 +15,7 @@ const Navbar = () => {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        "http://localhost:4001/api/users/logout",
-        { withCredentials: true }
-      );
+        "https://blog-app-ke5j.onrender.com/api/users/logout");
       console.log(data)
       toast.success(data.message);
       setIsAuthenticated(false);
@@ -27,6 +25,8 @@ const Navbar = () => {
       toast.error("failed to Logout");
     }
   };
+
+  console.log('isAuthenticate>>>>',profile)
   return (
     <>
       <nav className="shadow-lg px-4 py-3">

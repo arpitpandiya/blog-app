@@ -26,7 +26,7 @@ const Sidebar = ({ setComponent }) => {
   const handleLogout = async(e) => {
     e.preventDefault();
     try {
-      const {data} = await axios.get("http://localhost:4001/api/users/logout",{ withCredentials: true });
+      const {data} = await axios.get("https://blog-app-ke5j.onrender.com/api/users/logout");
       toast.success(data.message);
       setIsAuthenticated(false);
     } catch (error) {

@@ -31,12 +31,7 @@ const CreateBlog = () => {
     formData.append("blogImage",blogImage);
     
     try{
-      const {data} = await axios.post("http://localhost:4001/api/blogs/create", formData,{
-        withCredentials:true,
-        headers:{
-          "Content-Type":"multipart/form-data",
-        }
-      });
+      const {data} = await axios.post("https://blog-app-ke5j.onrender.com/api/blogs/create", FormData);
       console.log(data)
       toast.success(data.message || "User registered successfully")
       setTitle("")

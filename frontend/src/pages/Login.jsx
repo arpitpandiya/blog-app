@@ -8,7 +8,7 @@ import { Eye, EyeOff } from "lucide-react"
 
 
 const Login = () => {
-  const {isAuthenticated ,setIsAuthenticated,setProfile} = useAuth();
+  const { setIsAuthenticated,setProfile} = useAuth();
   const navigateTo = useNavigate();
   const[email, setEmail] = useState("")
   const[password, setPassword] = useState("")
@@ -19,15 +19,10 @@ const Login = () => {
   const handleLogin = async(e) =>{
     e.preventDefault()
     try{
-      const {data} = await axios.post("http://localhost:4001/api/users/login", {email, password, role},{
-        withCredentials:true,
-        headers:{
-          "Content-Type":"multipart/form-data"
-        }
-      });
+      const {data} = await axios.post("https://blog-app-ke5j.onrender.com/api/users/login", {email, password, role} );
       console.log(data)
       toast.success(data.message || "User Logined successfully",{duration:3000,});
-      // setProfile(data);
+      setProfile(data);
       setIsAuthenticated(true);
       setEmail("")
       setPassword("")

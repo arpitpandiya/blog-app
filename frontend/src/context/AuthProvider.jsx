@@ -11,11 +11,7 @@ export const AuthProvider = ({ children }) => {
     const fetchProfile = async () => {
       try {
           const { data } = await axios.get(
-            "http://localhost:4001/api/users/my-profile",
-            {
-              withCredentials: true,
-              headers: { "Content-Type": "application/json" },
-            }
+            "https://blog-app-ke5j.onrender.com/api/users/my-profile"
           );
           setProfile(data);
           console.log("API Response:", data);
@@ -28,9 +24,7 @@ export const AuthProvider = ({ children }) => {
     const fetchBlogs = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:4001/api/blogs/all-blogs",
-          { withCredentials: true }
-        );
+          "https://blog-app-ke5j.onrender.com/api/blogs/all-blogs" );
         console.log("API Response:", data);
         setBlogs(data);
       } catch (error) {
