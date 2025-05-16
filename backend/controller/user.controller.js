@@ -75,6 +75,7 @@ export const login = async (req, res) => {
       return res.status(400).json({message: "Please fill required fields"});
     }
     const user = await User.findOne({email}).select("+password")
+    console.log('user>>>',user)
     if(!user){
       return res.status(400).json({message: "User password is missing"});
     }
@@ -87,14 +88,10 @@ export const login = async (req, res) => {
       return res.status(400).json({message: `Given role ${role} not found`});
     }
     const token = await createTokenAndSaveCookies(user._id, res);
-    console.log("Login: ",token)
-    res.status(200).json({message: "User logged in successfully", user:{
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      role: user.role,
-      
-    }, token: token});
+ 
+    res.status(200).json({message: "User logged in successfully", 
+      user
+    , token: token});
   } catch(error){
     console.log(error)
     return res.status(500).json({message: "Internal Server Error"})
@@ -116,7 +113,7 @@ export const logout = (req, res)=>{
 // Get my profile
 
 export const getMyProfile = async(req, res)=>{
-  const user = req.user;
+  const user = req?.user;
   res.status(200).json({user});
 }
 
