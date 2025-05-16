@@ -3,6 +3,13 @@ import { v2 as cloudinary } from 'cloudinary';
 import bcrypt from "bcryptjs";
 import createTokenAndSaveCookies from "../jwt/AuthToken.js";
 
+
+export const getMyProfile = async(req, res)=>{
+  const user = req.user;
+  res.status(200).json({user});
+}
+
+
 //Register
 export const register = async (req, res) => {
   try {
@@ -87,14 +94,10 @@ export const login = async (req, res) => {
       return res.status(400).json({message: `Given role ${role} not found`});
     }
     const token = await createTokenAndSaveCookies(user._id, res);
+    const result = await getMyProfile()
     console.log("Login: ",token)
-    res.status(200).json({message: "User logged in successfully", user:{
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      role: user.role,
-      
-    }, token: token});
+    res.status(200).json({message: "User logged in successfully", 
+      result , token: token});
   } catch(error){
     console.log(error)
     return res.status(500).json({message: "Internal Server Error"})
@@ -115,10 +118,6 @@ export const logout = (req, res)=>{
 
 // Get my profile
 
-export const getMyProfile = async(req, res)=>{
-  const user = req.user;
-  res.status(200).json({user});
-}
 
 // show all admins
 
