@@ -22,6 +22,7 @@ const MONGO_URL = process.env.MONGO_URI;
 // Enable CORS
   app.use(cors({
   origin: '*',
+  credentials: true
 }));
 
   app.use(
